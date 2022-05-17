@@ -6,13 +6,13 @@
   </div>
 </template>
 <script>
-import EmptyLayout from "@/layouts/EmptyLayout.vue";
-import MainLayout from "@/layouts/MainLayout.vue";
+import EmptyLayout from '@/layouts/EmptyLayout.vue';
+import MainLayout from '@/layouts/MainLayout.vue';
 export default {
   computed: {
     layout() {
     
-      return (this.$route.meta.layout || 'main') +'-layout';
+      return (this.$route.meta.layout || 'empty') +'-layout';
     },
   },
   components: {
