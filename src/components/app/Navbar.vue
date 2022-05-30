@@ -40,6 +40,9 @@
 </template>
 
 <script>
+
+
+
 export default {
   name: "sidebar",
   data() {
@@ -68,14 +71,6 @@ export default {
       this.drop.destroy()
     }
   },
-  // computed: {
-  //   getDate: function() {
-  //         let date = new Date();
-  //     this.fullDate = `${date.getDate()+'.' + (date.getMonth() + 1) + '.' + date.getFullYear()}`
-  //       console.log(fullDate)
-  //     return fullDate
 
-  //   },
-  // },
 };
 </script>
