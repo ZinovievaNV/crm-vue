@@ -57,11 +57,7 @@
     </div>
     <div class="card-action">
       <div>
-        <button
-          @click="submitHandlers"
-          class="btn waves-effect waves-light auth-submit"
-          type="submit"
-        >
+        <button class="btn waves-effect waves-light auth-submit" type="submit">
           Войти
           <i class="material-icons right">send</i>
         </button>
@@ -69,13 +65,12 @@
 
       <p class="center">
         Нет аккаунта?
-        <router-link to="/">Зарегистрироваться</router-link>
+        <router-link to="/register">Зарегистрироваться</router-link>
       </p>
     </div>
   </form>
 </template>
 <script>
-//import { reactive } from "@vue/composition-api";
 import { email, required, minLength } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
 
@@ -85,30 +80,33 @@ export default {
   },
   data() {
     return {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     };
   },
   validations() {
     return {
       password: { required, minLength: minLength(6) },
-
       email: { required, email },
     };
   },
-  mounted() {
-    // console.log(this.v$.email.$invalid,'email');
-  },
+
   methods: {
     submit() {
-      if (!this.v$.email.$invalid && !this.v$.password.$invalid) {
-        console.log("Все поля  валидны");
-        this.$router.push("#");
-      } else {
-        console.log("поле НЕ Валидный!!");
+      if (this.v$.$invalid) {
+        console.log("Поля НЕ валидны");
+        this.v$.$touch();
+        return;
       }
+      console.log('ОК');
+      const formData = {
+        email: this.email,
+        password: this.password
+      }
+      this.$router.push("/");
+      this.email = '';
+      this.password = '';
     },
-    submitHandlers() {},
   },
 };
 </script>
